@@ -45,30 +45,6 @@ This Chrome Extension is designed to enhance ticket management in Zendesk by pro
 - **Zendesk**: Utilizes Zendesk APIs or DOM parsing to extract ticket details and provide relevant suggestions.
 - **Suggestion Engine**: Basic string matching or advanced AI-based suggestions (e.g., OpenAI) for improved response recommendations.
 
-## Implementation Steps
-
-1. **Setup Chrome Extension**:
-   - Learn Chrome extension development.
-   - Create a basic extension with popup and background scripts.
-   - Configure permissions in `manifest.json`.
-
-2. **Build the Backend**:
-   - Initialize a Node.js project with Express.
-   - Configure Prisma ORM with PostgreSQL.
-   - Develop and test API endpoints.
-
-3. **Connect Frontend and Backend**:
-   - Build and integrate React.js components with backend APIs.
-   - Implement content scripts to fetch Zendesk ticket details.
-
-4. **Add Advanced Features**:
-   - Implement enhanced search and suggestion logic.
-   - Consider integrating advanced AI suggestions.
-
-5. **Deploy and Test**:
-   - Deploy the backend on platforms like Heroku or Vercel.
-   - Test and package the Chrome extension for production use.
-
 ## Installation and Usage
 
 1. **Clone the Repository**:
