@@ -9,27 +9,33 @@ app.use(cors());
 app.use(express.json());
 
 //Route to get suggestions based on the ticket subject
-app.post('/api/suggestions',async(req:any,res:any)=>{
+app.post('/api/templates',async(req:any,res:any)=>{
     console.log("touched suggestions")
-    const {subject}=req.body
-    //logic to match keyword
-    const templates=await prisma.template.findMany({
-        where:{
-            keywords:{
-                has:subject
-            }
+    console.log(req.body);
+    const { subject, body } = req.body; // Destructure 'subject' and 'body' from 'req.body'
+
+    if (!subject || !body) {
+      return res.status(400).json({ error: 'Subject and body are required' });
+    }
+    //logic create template
+    const templates=await prisma.template.create({
+        data:{
+            subject:subject,
+            body:body
         }
     });
     res.json(templates);
 })
 
+
 //Route to get templates by search keyword
-app.get('/api/templates',async(req:any,res:any)=>{
+app.post('/api/suggestions',async(req:any,res:any)=>{
     console.log("touched template-groups")
-    const {keyword}=req.query;
+    const {subject,body}=req.body;
     const templates=await prisma.template.findMany({
         where:{
-            subject:{contains:String(keyword)}
+            subject:{contains:String(subject)},
+            body:{contains:String(body)}
         }
     });
     res.json(templates)

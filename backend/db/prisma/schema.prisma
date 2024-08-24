@@ -17,7 +17,6 @@ model Template {
   id Int @id @default(autoincrement())
   subject String
   body String
-  keywords String[]
   createdAt DateTime @default(now())
 }
 
@@ -27,3 +26,4 @@ model TabGroup {
   urls String[]
   createdAt DateTime @default(now())
 }
+
