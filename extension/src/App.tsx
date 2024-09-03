@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 import TicketForm from './components/TicketForm';
 import TemplateSuggestions from './components/TemplateSuggestion';
 
-const App: React.FC = () => {
-  const [templates, setTemplates] = useState('');
+//defining the type for the object
+interface SuggestionsObj {
+  data:object []
+  //if required we can add more properties here
+}
 
+const App: React.FC = () => {
+  //initializing state with an empty array
+  const [templates, setTemplates] = useState<SuggestionsObj[]>([]);
+
+  //function to update the array
   const fetchSuggestions = async (subject: string, body: string) => {
     try {
       // Replace with your actual backend API URL
@@ -22,10 +30,10 @@ const App: React.FC = () => {
       })
       .then((data:any)=>{
         console.log(data)
+
         // const t=setTemplates(data[0].body);
         // console.log(t);
-        const bodyContent = data.map((item:any) => item.createdAt);
-        setTemplates(bodyContent);
+        setTemplates(data);
        
       })
     
