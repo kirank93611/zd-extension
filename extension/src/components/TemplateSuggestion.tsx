@@ -9,8 +9,10 @@ const TemplateSuggestions: React.FC<TemplateSuggestionsProps> = ({ templates }) 
 
     return (
       <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <br></br>
+      <h1>Suggested Templates</h1>
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">Suggested Templates</div>
+        <div className="font-bold text-xl mb-2">Content</div>
         <p className="text-gray-700 text-base">
           {templates}
         </p>
@@ -18,6 +20,7 @@ const TemplateSuggestions: React.FC<TemplateSuggestionsProps> = ({ templates }) 
       <div className="px-6 pt-4 pb-2">
       </div>
     </div>
+
       );   
 }
 
