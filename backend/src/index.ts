@@ -32,13 +32,19 @@ app.post('/api/templates',async(req:any,res:any)=>{
 app.post('/api/suggestions',async(req:any,res:any)=>{
     console.log("touched template-groups")
     const {subject,body}=req.body;
+    const notfound="nothing found bro!";
     const templates=await prisma.template.findMany({
         where:{
             subject:{contains:String(subject)},
             body:{contains:String(body)}
         }
     });
-    res.json(templates)
+    if(templates){
+        res.status(200).json(templates)
+    } else {
+        res.status(404).json({success:false,message:"not found!"});
+    }
+    
 });
 
 //Route to manage tab groups

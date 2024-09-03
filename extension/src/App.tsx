@@ -14,16 +14,21 @@ const App: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ subject, body }),
-      }).then(response=>response.json())
-      .then((data)=>{
-        console.log(data)
-        const t=setTemplates(data[0].body);
-        console.log(t);
+      }).then(response=>{
+        const t=response.json();
+        // console.log(t);
+        return t;
+        // console.log(response);
       })
-      
-
-
-
+      .then((data:any)=>{
+        console.log(data)
+        // const t=setTemplates(data[0].body);
+        // console.log(t);
+        const bodyContent = data.map((item:any) => item.createdAt);
+        setTemplates(bodyContent);
+       
+      })
+    
         // setTemplates(data.subject);
       
     } catch (error) {

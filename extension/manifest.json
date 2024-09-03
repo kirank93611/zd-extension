@@ -1,0 +1,13 @@
+{
+    "manifest_version": 1,
+    "name": "Email Template Suggestor",
+    "version": "1.0.0",
+    "description": "A zendesk-based extension for support application",
+    "permissions": ["activeTab", "storage"],
+    "background": {
+      "service_worker": "src/background.ts"
+    },
+    "action": {
+      "default_popup": "popup.tsx"
+    }
+  }
