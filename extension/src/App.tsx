@@ -3,14 +3,19 @@ import TicketForm from './components/TicketForm';
 import TemplateSuggestions from './components/TemplateSuggestion';
 
 //defining the type for the object
-interface SuggestionsObj {
-  data:object []
-  //if required we can add more properties here
+
+interface TemplateData {
+  id: number;
+  subject:string;
+  body: string;
+  createdAt:string;
 }
+
+
 
 const App: React.FC = () => {
   //initializing state with an empty array
-  const [templates, setTemplates] = useState<SuggestionsObj[]>([]);
+  const [templates, setTemplates] = useState<TemplateData[]>([]);
 
   //function to update the array
   const fetchSuggestions = async (subject: string, body: string) => {
@@ -22,20 +27,10 @@ const App: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ subject, body }),
-      }).then(response=>{
-        const t=response.json();
-        // console.log(t);
-        return t;
-        // console.log(response);
       })
-      .then((data:any)=>{
-        console.log(data)
-
-        // const t=setTemplates(data[0].body);
-        // console.log(t);
-        setTemplates(data);
-       
-      })
+      const data:TemplateData[]=await response.json();
+      console.log(data);
+      setTemplates(data);
     
         // setTemplates(data.subject);
       
